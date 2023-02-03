@@ -21,14 +21,14 @@ function playRound(playerSelection, computerSelection){
 
     // Starts by checking if tie
     if (computerSelection == playerSelection) {
-        return 'Tie!';
+        console.log('Tie!');
 
     // Compares player selection to rock
     } else if (computerSelection == 'rock') {
         
         if (playerSelection == 'paper') {
             console.log('You win! Paper beats Rock'); // Debug
-            return playerWin = true;
+            //return playerWin = true;
         } else {
             console.log('You lose! Rock beats Scissors'); // Debug
         }
@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection){
 
         if (playerSelection == 'scissors') {
             console.log('You win! Scissors beats Paper'); // Debug
-            return playerWin = true;
+            //return playerWin = true;
         } else {
             console.log('You lose! Paper beats Rock'); // Debug
         }
@@ -50,7 +50,7 @@ function playRound(playerSelection, computerSelection){
 
         if (playerSelection == 'rock') {
             console.log('You win! Rock beats Scissors'); // Debug
-            return playerWin = true;
+            //return playerWin = true;
         } else {
             console.log('You lose! Scissors beats Paper'); // Debug
         }
@@ -65,6 +65,9 @@ function game(playerSelection, computerSelection){
     // Calls playRound() 5 times
     for (let i = 0; i < 5; i++) {
 
+        // Asks for user's selection
+        playerSelection = prompt('What is your move?')
+
         // Changes computer selection every round
         computerSelection = getComputerChoice();
 
@@ -74,5 +77,4 @@ function game(playerSelection, computerSelection){
 }
 
 // Debug - Running one round
-const playerSelection = 'paper';
-game(playerSelection); 
+game(); 
