@@ -1,5 +1,5 @@
 const rpsMoves=['rock','paper','scissors']; // Moves in game
-
+let playerWin = false; // Track if player won
 
 // Makes computer makes move
 function getComputerChoice(){
@@ -7,7 +7,7 @@ function getComputerChoice(){
     return rpsMoves[ Math.floor(Math.random() * rpsMoves.length)];
 }
 
-// Plays one round of Rock Paper Scissors
+// Plays one ROUND of rock paper scissors
 function playRound(playerSelection, computerSelection){
     
     // Makes player input case insensitive
@@ -27,18 +27,20 @@ function playRound(playerSelection, computerSelection){
     } else if (computerSelection == 'rock') {
         
         if (playerSelection == 'paper') {
-            return 'You win! Paper beats Rock';
+            console.log('You win! Paper beats Rock'); // Debug
+            return playerWin = true;
         } else {
-            return 'You lose! Rock beats Scissors';
+            console.log('You lose! Rock beats Scissors'); // Debug
         }
     
     // Compares player selection to paper
     } else if (computerSelection == 'paper') {
 
         if (playerSelection == 'scissors') {
-            return 'You win! Scissors beats Paper';
+            console.log('You win! Scissors beats Paper'); // Debug
+            return playerWin = true;
         } else {
-            return 'You lose! Paper beats Rock';
+            console.log('You lose! Paper beats Rock'); // Debug
         }
 
     }
@@ -47,16 +49,30 @@ function playRound(playerSelection, computerSelection){
     else if (computerSelection == 'scissors') {
 
         if (playerSelection == 'rock') {
-            return 'You win! Rock beats Scissors';
+            console.log('You win! Rock beats Scissors'); // Debug
+            return playerWin = true;
         } else {
-            return 'You lose! Scissors beats Paper';
+            console.log('You lose! Scissors beats Paper'); // Debug
         }
 
     }
     
 }
 
+// Plays one GAME of rock paper scissor
+function game(playerSelection, computerSelection){
+
+    // Calls playRound() 5 times
+    for (let i = 0; i < 5; i++) {
+
+        // Changes computer selection every round
+        computerSelection = getComputerChoice();
+
+        playRound(playerSelection, computerSelection);
+    }
+
+}
+
 // Debug - Running one round
 const playerSelection = 'paper';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+game(playerSelection); 
