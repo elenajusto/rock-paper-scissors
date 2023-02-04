@@ -1,7 +1,8 @@
 const rpsMoves=['rock','paper','scissors']; // Moves in game
-let playerWin = false; // Track if player won
+let playerWins = 0; // Counts amount of times player won
+let computerWins = 0; // Counts amount of times computer won
 
-// Makes computer makes move
+// Gets computer makes move
 function getComputerChoice(){
     // Randomly select move
     return rpsMoves[ Math.floor(Math.random() * rpsMoves.length)];
@@ -28,9 +29,10 @@ function playRound(playerSelection, computerSelection){
         
         if (playerSelection == 'paper') {
             console.log('You win! Paper beats Rock'); // Debug
-            //return playerWin = true;
+            playerWin+=1; // Adds point to player
         } else {
             console.log('You lose! Rock beats Scissors'); // Debug
+            computerWins+=1; // Adds point to computer
         }
     
     // Compares player selection to paper
@@ -38,9 +40,10 @@ function playRound(playerSelection, computerSelection){
 
         if (playerSelection == 'scissors') {
             console.log('You win! Scissors beats Paper'); // Debug
-            //return playerWin = true;
+            playerWin+=1; // Adds point to player
         } else {
             console.log('You lose! Paper beats Rock'); // Debug
+            computerWins+=1; // Adds point to computer
         }
 
     }
@@ -50,9 +53,10 @@ function playRound(playerSelection, computerSelection){
 
         if (playerSelection == 'rock') {
             console.log('You win! Rock beats Scissors'); // Debug
-            //return playerWin = true;
+            playerWin+=1; // Adds point to player
         } else {
             console.log('You lose! Scissors beats Paper'); // Debug
+            computerWins+=1; // Adds point to computer
         }
 
     }
@@ -74,6 +78,20 @@ function game(playerSelection, computerSelection){
         playRound(playerSelection, computerSelection);
     }
 
+    // Final win/loss Message    
+    if (playerWins > computerWins) {
+        console.log('Congratulations! You won the game.');
+        console.log('Your Score: ', playerWins);
+        console.log('Computer score: ', computerWins);
+    } else if (playerWins == computerWins) {
+        console.log("It's a tie!!!");
+        console.log('Your Score: ', playerWins);
+        console.log('Computer score: ', computerWins);
+    } else if (playerWins < computerWins) {
+        console.log('You lost the game.');
+        console.log('Your Score: ', playerWins);
+        console.log('Computer score: ', computerWins);
+    }
 }
 
 // Debug - Running one round
